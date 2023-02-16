@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Body, Head, Heading, Info, InfoRow, Table } from "./TransactionHistory,styled";
 
 export const TransactionTable = ({ items }) => {
@@ -21,3 +22,7 @@ export const TransactionTable = ({ items }) => {
         </Body>
     </Table>)
 };
+
+TransactionTable.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.object),
+}
