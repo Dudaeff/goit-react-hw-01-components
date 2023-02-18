@@ -6,15 +6,16 @@ export const Statistics = ({ title, stats }) => {
   return (
     <Section>
       {title && <Title>{title}</Title>}
-    
+
       <List>
         {stats.map(({ id, label, percentage }) => {
           return (
-            <Item key={id} style={{backgroundColor: getRandomHexColor()}}>
+            <Item key={id} style={{ backgroundColor: getRandomHexColor() }}>
               <span>{label}</span>
               <span>{percentage}%</span>
             </Item>
-          )})}
+          );
+        })}
       </List>
     </Section>
   );
@@ -22,5 +23,11 @@ export const Statistics = ({ title, stats }) => {
 
 Statistics.propTypes = {
   title: PropTypes.string,
-  stats: PropTypes.arrayOf(PropTypes.object),
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      label: PropTypes.string,
+      percentage: PropTypes.number,
+    })
+  ).isRequired,
 };
